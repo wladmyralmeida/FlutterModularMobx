@@ -1,5 +1,5 @@
-class User {
+class Pokemon {
   final String name;
 
-  User({this.name});
+  Pokemon({this.name});
 }

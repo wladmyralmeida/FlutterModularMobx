@@ -5,14 +5,10 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: '/',
-        //Não precisar de contexto para realizar a navegação
+      // set your initial route
+      initialRoute: "/login",
       navigatorKey: Modular.navigatorKey,
-      //Passa a ser responsável pelas rotas e pelas injeções de dependência
+      // add Modular to manage the routing system
       onGenerateRoute: Modular.generateRoute,
     );
   }
