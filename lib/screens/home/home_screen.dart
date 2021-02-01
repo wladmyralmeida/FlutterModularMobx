@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hello_world/screens/home/home_controller.dart';
 
@@ -21,13 +22,35 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(icon: Icon(Icons.accessibility), onPressed: () {}),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text('Hello World! Lets Go CI&T' + homeController.nome),
-          ),
-        ],
+      body: Observer(
+        builder: (BuildContext context) {
+          if (homeController.pokemons.error != null) {
+            return Center(
+              child: RaisedButton(
+                onPressed: () {
+                  homeController.fetchPokemons();
+                },
+                child: Text('Pressione novamente'),
+              ),
+            );
+          }
+          if (homeController.pokemons.value == null) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          var list = homeController.pokemons.value;
+
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text(list[index].name),
+              );
+            },
+          );
+        },
       ),
     );
   }

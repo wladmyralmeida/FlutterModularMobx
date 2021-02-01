@@ -10,7 +10,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final homeController = Modular.get<HomeController>();
+  // final homeController = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +21,15 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: TextField(
           onChanged: (value){
-            homeController.nome = value;
+            // homeController.nome = value;
           },
           decoration: InputDecoration(labelText: "Um texto qualquer"),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => Navigator.pushNamed(context, '/${homeController.nome}'),
+        // onPressed: () => Navigator.pushNamed(context, '/${homeController.nome}'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         //ou Modular.to.pushNamed
       ),
     );

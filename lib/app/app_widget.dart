@@ -5,6 +5,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // set your initial route
       initialRoute: "/login",
       navigatorKey: Modular.navigatorKey,
