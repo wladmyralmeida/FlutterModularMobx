@@ -15,21 +15,30 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Center(
-        child: TextField(
-          onChanged: (value){
-            // homeController.nome = value;
-          },
-          decoration: InputDecoration(labelText: "Um texto qualquer"),
-        ),
+
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Página de Login', style: TextStyle(fontSize: 32.0, color: Colors.black, fontWeight: FontWeight.bold),),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+            child: TextField(
+              onChanged: (value) {
+                // homeController.nome = value;
+              },
+              decoration: InputDecoration(labelText: "Um texto qualquer"),
+            ),
+          ),
+          RaisedButton(
+            child: Text('Próxima Página'),
+            onPressed: () => Navigator.pushNamed(context, '/tutorial'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         // onPressed: () => Navigator.pushNamed(context, '/${homeController.nome}'),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => {},
         //ou Modular.to.pushNamed
       ),
     );

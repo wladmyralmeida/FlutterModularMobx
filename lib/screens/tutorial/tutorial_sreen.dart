@@ -94,7 +94,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
           )
         ],
         widgetNext: RaisedButton(
-          onPressed: () => Navigator.pushNamed(context, '/'),
+          onPressed: null,
           disabledColor:  Colors.lightBlueAccent,
           child: Text(
             "Sair",
@@ -152,24 +152,34 @@ class _TutorialScreenState extends State<TutorialScreen> {
           )
         ],
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Background(),
-          StaggeredGridView.countBuilder(
-            crossAxisCount: 2,
-            itemCount: list.length,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-            itemBuilder: (BuildContext context, int index) => new Container(
-              key: index == 0 ? keyContainer : null,
-              child: Image.asset(
-                list[index]["url"],
-                fit: BoxFit.cover,
-              ),
+          RaisedButton(
+            child: Text('Ir para Exemplo de Api'),
+            onPressed: () =>Navigator.pushNamed(context, '/'),
+          ),
+          Expanded(
+            child: Stack(
+              children: [
+                Background(),
+                StaggeredGridView.countBuilder(
+                  crossAxisCount: 2,
+                  itemCount: list.length,
+                  crossAxisSpacing: 2,
+                  mainAxisSpacing: 2,
+                  itemBuilder: (BuildContext context, int index) => new Container(
+                    key: index == 0 ? keyContainer : null,
+                    child: Image.asset(
+                      list[index]["url"],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  staggeredTileBuilder: (int index) =>
+                      new StaggeredTile.count(list[index]["x"], list[index]["y"]),
+                ),
+              ],
             ),
-            staggeredTileBuilder: (int index) =>
-                new StaggeredTile.count(list[index]["x"], list[index]["y"]),
-          )
+          ),
         ],
       ),
       drawer: Drawer(),
